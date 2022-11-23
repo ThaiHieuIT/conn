@@ -1,16 +1,7 @@
 <?php
-    $conn = new mysqli('localhost','root','','testting1');
-
-    if(isset($_POST['add'])){
-        $q = $conn->query('insert into product(category_id,product_id,product_name,product_image,product_price) 
-        values("'.$_POST['choice'].'","'.$_POST['productid'].'","'.$_POST['productname'].'","'.$_POST['productimage'].'","'.$_POST['productprice'].'") ');
-    }
-
-    if(isset($_GET['id'])){
-        $q = $conn->query('delete from product where product_id='.$_GET['id']);
-        header("location: product.php");
-    }
-
+    $conn = new mysqli('localhost','root','','testting1'); //Kết nối mysql
+    
+    //Lấy dữ liệu từ bảng product
     $q = $conn->query('select * from product');
     $s = '';
     while($r = $q->fetch_array()) {
@@ -24,12 +15,24 @@
         </tr>
         ';
     }
-
+    //Lấy dữ liệu từ bản category
     $q1 = $conn->query('select * from category');
     $s1 = '';
     while($r1 = $q1->fetch_array()) {
         ;
         $s1 .= '<option value="'.$r1['category_id'].'">'.$r1['category_name'].'</option>';
+    }
+
+    //Thêm dữ liệu
+    if(isset($_POST['add'])){
+        $q = $conn->query('insert into product(category_id,product_id,product_name,product_image,product_price) 
+        values("'.$_POST['choice'].'","'.$_POST['productid'].'","'.$_POST['productname'].'","'.$_POST['productimage'].'","'.$_POST['productprice'].'") ');
+    }
+
+    //Xóa dữ liệu
+    if(isset($_GET['id'])){
+        $q = $conn->query('delete from product where product_id='.$_GET['id']);
+        header("location: product.php");
     }
 ?>
 
@@ -61,7 +64,7 @@
     <form action="" method="post">
         Choose Category: <br>
         <select name="choice">
-            <option value=""><?php echo $s1; ?></option>
+            <?php echo $s1; ?>
         </select> <br>
         ID: <br>
         <input type="text" name="productid" placeholder="Enter Product ID"> <br>
