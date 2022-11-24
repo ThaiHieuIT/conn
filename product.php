@@ -9,7 +9,7 @@
         <tr>
             <td>'.$r['product_id'].'</td>
             <td>'.$r['product_name'].'</td>
-            <td>'.$r['product_image'].'</td>
+            <td>'.'<img src="images/'.$r["product_image"].'" width="30" height="30"/>'.'</td>
             <td>'.$r['product_price'].'</td>
             <td><a href="product.php?id='.$r['product_id'].'">Remove</a></td>
         </tr>
@@ -27,6 +27,7 @@
     if(isset($_POST['add'])){
         $q = $conn->query('insert into product(category_id,product_id,product_name,product_image,product_price) 
         values("'.$_POST['choice'].'","'.$_POST['productid'].'","'.$_POST['productname'].'","'.$_POST['productimage'].'","'.$_POST['productprice'].'") ');
+        header("location: product.php");
     }
 
     //Xóa dữ liệu
