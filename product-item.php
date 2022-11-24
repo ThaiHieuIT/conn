@@ -8,21 +8,6 @@
     <link rel="stylesheet" href="./css/product.css">
 </head>
 <body>
-    <style>
-        .title-name{
-            line-height: 80px;
-            height: 80px;
-            color: #fff;
-            background-color: #009EFF;
-        }
-        .img-item{
-            width: 24%;
-            height: 300px;
-            border: 1px solid #000;
-            margin: 0 5px;
-            border-radius: 5px;
-        }
-    </style>
     <?php
         $con = new mysqli('localhost','root','','testting1');
         $q = $con->query('select * from category');

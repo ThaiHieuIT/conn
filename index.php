@@ -12,5 +12,7 @@
     <a href="product.php">Product</a>
     <br>
     <a href="show.php">Show Sản Phẩm</a>
+    <br>
+    <a href="product-item.php">List sản phẩm</a>
 </body>
 </html>

@@ -1,23 +1,14 @@
-.product-name{
-    height: 60px;
-    background-color: #009EFF;
-    color: #fff;
-    line-height: 60px;
-    font-size: 25px;
-}
-
-.produc-item{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.produc-item img{
-    width: 33.3333%;
-    height: 200px;
-    border: 1px solid #000;
-}
-
+        
 .title-name{
-    height: 100px;
+    line-height: 80px;
+    height: 80px;
+    color: #fff;
+    background-color: #009EFF;
+}
+.img-item{
+    width: 24%;
+    height: 300px;
+    border: 1px solid #000;
+    margin: 0 5px;
+    border-radius: 10px;
 }
