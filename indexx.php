@@ -1,3 +1,6 @@
+<?php
+    require 'include/product-item.php';
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +10,10 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="category.php">Category</a>
-    <br>
-    <a href="product.php">Product</a>
-    <br>
-    <a href="indexx.php">Show Sản Phẩm</a>
+<?php
+    $s = "select * from category";
+    $s .= " where category_id=2";
+    echo getData($s);
+?>
 </body>
 </html>

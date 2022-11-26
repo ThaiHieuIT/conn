@@ -24,8 +24,9 @@
         }
     </style>
     <?php
+       function getData($s){
         $con = new mysqli('localhost','root','','testting1');
-        $q = $con->query('select * from category');
+        $q = $con->query($s);
         $xau ='';
         while($r=$q->fetch_array()){
             $xau .= '<h1 class="title-name">'.$r['category_name'].'<br>'.'</h1>';
@@ -33,13 +34,16 @@
             while($r1=$q1->fetch_array()){
                 $xau .='<img class="img-item" src="images/'
                 .$r1["product_image"].'"/>';
-        }}
+        }
+        if($q1->num_rows==0)$xau.="<h3>Chưa có sản phẩm cho mục này</h3><br>";
+    }  
+        
+        $con->close();
+        return $xau;
+       }
+       
     ?>
 
-    <div class="product">
-        <div class="product-name">
-            <?php echo $xau ?>
-        </div>
-    </div>
+    
 </body>
 </html>
