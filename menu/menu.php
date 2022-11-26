@@ -1,3 +1,4 @@
+<?php require '../include/product-item.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +23,18 @@
                 <li>
                     <a href="">All</a>
                     <ul class="subnav">
-                        <li><a href="">Electrics & Computers</a></li>
+                        <?php
+                        $arr = getArray('Select * from category');
+                        $s = '';
+                        for ($i = 0; $i < count($arr); $i++) {
+                            $s .= '<li><a href="menu.php?category_id=' .
+                                $arr[$i]->category_id . '">' . $arr[$i]->category_name . '</a></li>';
+                        }
+                        echo $s;
+                        ?>
+                        <!-- <li><a href="">Electrics & Computers</a></li>
                         <li><a href="">Home, Garden & Tools</a></li>
-                        <li><a href="">Handmade</a></li>
+                        <li><a href="">Handmade</a></li> -->
                     </ul>
                 </li>
                 <li><a href="">Contact</a></li>
@@ -33,22 +43,15 @@
                 <li><a href="">Contact</a></li>
             </ul>
         </div>
-        <?php
-        $con = new mysqli('localhost', 'root', '', 'testting1');
-        $q = $con->query('select * from category');
-        $xau = '';
-        while ($r = $q->fetch_array()) {
-            $xau .= '<h1 class="title-name">' . $r['category_name'] . '<br>' . '</h1>';
-            $q1 = $con->query('select * from product where category_id=' . $r['category_id']);
-            while ($r1 = $q1->fetch_array()) {
-                $xau .= '<img class="img-item" src="../images/'
-                    . $r1["product_image"] . '"/>';
-            }
-            if ($q1->num_rows == 0) $xau .= "<h3>Chưa có sản phẩm cho mục này</h3><br>";
+        <?php 
+        $s ="Select * from category";
+        if(isset($_GET['category_id'])){
+          $s .= " where category_id = ".$_GET['category_id'];
         }
+        echo getData($s);
         ?>
+        
         <div class="content">
-            <?php echo $xau; ?>
         </div>
     </div>
 </body>
