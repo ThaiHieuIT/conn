@@ -27,7 +27,7 @@
         class Category{
             var $category_id;
             var $category_name;
-            function __construct($category_name, $category_id){
+            function __construct( $category_id,$category_name){
                 $this -> category_id = $category_id;
                 $this -> category_name = $category_name;
             }
@@ -50,7 +50,7 @@
                 $xau .= '<h1 class="title-name">'.$r['category_name'].'<br>'.'</h1>';
                 $q1 = $con->query('select * from product where category_id='.$r['category_id']);
                 while($r1=$q1->fetch_array()){
-                    $xau .='<img class="img-item" src="images/'
+                    $xau .='<img class="img-item" src="../images/'
                     .$r1["product_image"].'"/>';
                 }
             if($q1->num_rows==0)$xau.="<h3>Chưa có sản phẩm cho mục này</h3><br>";
