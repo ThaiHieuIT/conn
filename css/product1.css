@@ -12,3 +12,14 @@
     margin: 0 5px;
     border-radius: 10px;
 }
+.product{
+    display: flex;
+}
+
+.myImg{
+    margin: 5px 5px;
+}
+
+.myImg img{
+    width: 100%;
+}

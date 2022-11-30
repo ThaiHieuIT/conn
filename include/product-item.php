@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/product.css">
+    <link rel="stylesheet" href="../css/product1.css">
 </head>
 <body>
     <style>
@@ -45,14 +45,18 @@
         function getData($s){
             $con = new mysqli('localhost','root','','testting1');
             $q = $con->query($s);
-            $xau ='';
+            $xau ='<div><div>';
             while($r=$q->fetch_array()){
-                $xau .= '<h1 class="title-name">'.$r['category_name'].'<br>'.'</h1>';
+                $xau .= '<div class="title-name">'.$r['category_name'].'<br>'.'</div><div class="product">';
                 $q1 = $con->query('select * from product where category_id='.$r['category_id']);
                 while($r1=$q1->fetch_array()){
-                    $xau .='<img class="img-item" src="../images/'
-                    .$r1["product_image"].'"/>';
+                    $xau .='<div class="myImg"><img class="img-item" src="../images/'.$r1["product_image"].'"/>
+                    <h4>'.$r1['product_name'].'</h4>
+                    Price: '.$r1['product_price'].'
+                    <h4><a href="">Buy</a></h4>
+                    </div>';
                 }
+                $xau .='</div>';
             if($q1->num_rows==0)$xau.="<h3>Chưa có sản phẩm cho mục này</h3><br>";
             }  
             
