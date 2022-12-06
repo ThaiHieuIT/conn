@@ -44,7 +44,7 @@
                     </ul>
                 </li>
                 <li><a href="">Contact</a></li>
-                <li><a href="">About Us</a></li>,
+                <li><a href="">About Us</a></li>
                 <li><a href="">Sign In</a></li>
                 <li>
                     <a href="/conn/cart/cart.php">Cart</a>
