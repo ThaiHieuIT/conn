@@ -1,0 +1,18 @@
+table{
+    border-collapse: collapse;
+    width: 60%;
+}
+table tr, td{
+    border: 1px solid darkblue;
+    padding: 8px;
+}
+table th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+}
+*{
+    font-size: 22px;
+}

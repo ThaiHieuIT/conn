@@ -12,5 +12,7 @@
     <a href="product.php">Product</a>
     <br>
     <a href="indexx.php">Show Sản Phẩm</a>
+    <br>
+    <a href="./menu/menu.php">Trang Chủ</a>
 </body>
 </html>

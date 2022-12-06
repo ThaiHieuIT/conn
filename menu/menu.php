@@ -8,10 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./banner.css">
-    <link rel="stylesheet" href="./menu1.css">
+    <!-- <link rel="stylesheet" href="./menu.css"> -->
+    <link rel="stylesheet" href="./menu2.css">
 </head>
 
 <body>
+    <?php 
+        if(isset($_GET['category_id']) && isset($_GET['product_id']) && isset($_GET['product_name']) && isset($_GET['product_price'])){
+            them($A, $_GET['category_id'], $_GET['product_id'], $_GET['product_name'], $_GET['product_price']);
+            $_SESSION['A']=$A;
+            header("location: menu.php");
+        }
+    ?>
     <div class="wrap">
         <div class="header">
             <div class="logo">
@@ -22,7 +30,7 @@
             </div>
             <ul id="nav">
                 <li>
-                    <a href="">All</a>
+                    <a href="/conn/menu/menu.php">All</a>
                     <ul class="subnav">
                         <?php
                         $arr = getArray('Select * from category');
@@ -33,15 +41,22 @@
                         }
                         echo $s;
                         ?>
-                        <!-- <li><a href="">Electrics & Computers</a></li>
-                        <li><a href="">Home, Garden & Tools</a></li>
-                        <li><a href="">Handmade</a></li> -->
                     </ul>
                 </li>
                 <li><a href="">Contact</a></li>
-                <li><a href="">About</a></li>,
-                <li><a href="">Tour</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="">About Us</a></li>,
+                <li><a href="">Sign In</a></li>
+                <li>
+                    <a href="/conn/cart/cart.php">Cart</a>
+                    <span class="number_cart">
+                        <?php
+                            if(isset($_SESSION['A'])){
+                                $A= $_SESSION['A'];
+                                echo count($A);
+                            }else echo "0";
+                        ?>
+                    </span>
+                </li>
             </ul>
         </div>
         <div class="banner">
