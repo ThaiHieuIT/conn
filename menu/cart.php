@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./cart.css">
+    <link rel="stylesheet" href="./menu.css">
+    <link rel="stylesheet" href="./banner.css">
 </head>
 <body>
+    
     <?php
         class SP{
             var $category_id;
@@ -20,7 +23,7 @@
                 $this->gia=$gia; 
                 $this->soluong=$soluong;
                 $this->category_id=$category_id;
-                $this->product_id=$product_id; 
+                $this->product_id=$product_id;
             }
         }
         session_start();
