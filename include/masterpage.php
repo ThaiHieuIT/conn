@@ -1,5 +1,12 @@
 <?php
     function myHeader(){
+        if(isset($_SESSION['A']))$A=$_SESSION['A'];
+        else $A = array();
+        if(isset($_GET['category_id']) && isset($_GET['product_id']) && isset($_GET['product_name']) && isset($_GET['product_price'])){
+            them($A, $_GET['category_id'], $_GET['product_id'], $_GET['product_name'], $_GET['product_price']);
+            $_SESSION['A']=$A;
+            header("location: menu.php");
+        }
         $xau = '
         <!DOCTYPE html>
         <html lang="en">
@@ -14,13 +21,7 @@
             <link rel="stylesheet" href="./menu2.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         </head>
-            <body>'; 
-                    if(isset($_GET['category_id']) && isset($_GET['product_id']) && isset($_GET['product_name']) && isset($_GET['product_price'])){
-                        them($A, $_GET['category_id'], $_GET['product_id'], $_GET['product_name'], $_GET['product_price']);
-                        $_SESSION['A']=$A;
-                        header("location: menu.php");
-                    }
-                $xau .= '<div class="wrap">
+            <body><div class="wrap">
                     <div class="header">
                         <div class="logo">
                             <img src="../images/logofavicon.png" alt="">
@@ -30,8 +31,9 @@
                         </div>
                         <ul id="nav">
                             <li>
-                                <a href="/conn/menu/menu.php">All</a>
-                                <ul class="subnav">';
+                                <a href="/conn/menu/menu.php">Danh Mục</a>
+                                <ul class="subnav">
+                                    <li><a href="/conn/menu/menu.php">Tất Cả</a></li>';
                                     $arr = getArray('Select * from category');
                                    
                                     for ($i = 0; $i < count($arr); $i++) {
@@ -45,11 +47,11 @@
                             <li><a href="">Sign In</a></li>
                             <li>
                                 <a href="./cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <span class="number_cart">';
-                                        if(isset($_SESSION['A'])){
-                                            $A= $_SESSION['A'];
-                                            echo count($A);
-                                        }else echo "0";
+                                <span class="number_cart">'.count($A);
+                                        // if(isset($_SESSION['A'])){
+                                        //     $A= $_SESSION['A'];
+                                        //     $xau .= count($A);
+                                        // }else $xau .= "0";
                                 $xau .='</span>
                             </li>
                         </ul>
